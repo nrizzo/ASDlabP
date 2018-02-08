@@ -72,7 +72,10 @@ void utf8_putchar(struct utf8_char *c)
 
 int utf8_isblank(struct utf8_char *c)
 {
-	return (c->bytes==1 && c->chr[0]==' ');
+	return (c->bytes==1 && (c->chr[0]==' '  ||
+	                        c->chr[0]=='\n' ||
+				c->chr[0]=='\t' ||
+				c->chr[0]=='\r' ));
 }
 
 int utf8_equals(struct utf8_char *a, struct utf8_char *b)
